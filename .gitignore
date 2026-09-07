@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+
+.env
+.env.*
+
+target/
+dbt_packages/
+logs/
