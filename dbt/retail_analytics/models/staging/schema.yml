@@ -1,0 +1,56 @@
+version: 2
+
+models:
+
+  - name: stg_customers
+
+    columns:
+
+      - name: customer_id
+        data_tests:
+          - not_null
+          - unique
+
+  - name: stg_products
+
+    columns:
+
+      - name: product_id
+        data_tests:
+          - not_null
+          - unique
+
+      - name: category
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - Sports
+                  - Clothing
+                  - Accessories
+
+  - name: stg_orders
+
+    columns:
+
+      - name: order_id
+        data_tests:
+          - not_null
+          - unique
+
+      - name: customer_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_customers')
+                field: customer_id
+
+      - name: product_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_products')
+                field: product_id
+

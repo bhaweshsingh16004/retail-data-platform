@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: retail_raw
+    database: retail-data-platform-507908
+    schema: retail_raw
+
+    tables:
+      - name: customers
+      - name: products
+      - name: orders
