@@ -61,6 +61,24 @@ jobs:
       - name: Install dbt
         run: pip install dbt-bigquery
 
+      - name: Create dbt profile
+        run: |
+          mkdir -p ~/.dbt
+
+          cat > ~/.dbt/profiles.yml <<'EOF'
+          retail_analytics:
+            target: dev
+
+            outputs:
+              dev:
+                type: bigquery
+                method: oauth
+                project: retail-data-platform-507908
+                dataset: retail_analytics
+                location: europe-north1
+                threads: 4
+          EOF
+
       - name: Check dbt project
         working-directory: dbt/retail_analytics
         run: dbt parse
