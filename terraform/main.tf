@@ -29,3 +29,21 @@ resource "google_storage_bucket" "raw" {
 
   force_destroy = true
 }
+
+resource "google_service_account" "github_actions" {
+  account_id   = "github-actions-ci"
+  display_name = "GitHub Actions CI Service Account"
+  description  = "Service account used by GitHub Actions to run CI validation"
+}
+
+resource "google_project_iam_member" "github_actions_bigquery_job_user" {
+  project = var.project_id
+  role    = "roles/bigquery.jobUser"
+  member  = "serviceAccount:${google_service_account.github_actions.email}"
+}
+
+resource "google_project_iam_member" "github_actions_bigquery_data_editor" {
+  project = var.project_id
+  role    = "roles/bigquery.dataEditor"
+  member  = "serviceAccount:${google_service_account.github_actions.email}"
+}
