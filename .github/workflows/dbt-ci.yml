@@ -34,7 +34,7 @@ jobs:
         run: terraform validate
 
 
-    dbt-check:
+  dbt-check:
     name: dbt Validation
     runs-on: ubuntu-latest
 
