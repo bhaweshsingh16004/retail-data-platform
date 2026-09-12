@@ -1,3 +1,5 @@
+-- CI/CD branch protection test
+
 select
     p.product_id,
     p.product_name,
