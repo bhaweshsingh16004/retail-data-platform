@@ -33,6 +33,10 @@ jobs:
         working-directory: terraform
         run: terraform validate
 
+      - name: Terraform Plan
+        working-directory: terraform
+        run: terraform plan -input=false  
+
 
   dbt-check:
     name: dbt Validation
