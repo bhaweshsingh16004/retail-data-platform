@@ -51,7 +51,7 @@ jobs:
           TF_VAR_project_id: ${{ vars.GCP_PROJECT_ID }}
         run: terraform plan -input=false
 
-  dbt-check:
+   dbt-check:
     name: dbt Validation
     runs-on: ubuntu-latest
 
