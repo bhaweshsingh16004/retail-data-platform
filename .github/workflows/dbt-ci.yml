@@ -35,6 +35,8 @@ jobs:
 
       - name: Terraform Plan
         working-directory: terraform
+        env:
+          TF_VAR_project_id: ${{ vars.GCP_PROJECT_ID }}
         run: terraform plan -input=false  
 
 
